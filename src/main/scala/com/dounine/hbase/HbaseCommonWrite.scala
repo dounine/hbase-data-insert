@@ -1,18 +1,17 @@
 package com.dounine.hbase
 
-import org.apache.hadoop.hbase.{HBaseConfiguration, KeyValue, TableName}
 import org.apache.hadoop.hbase.client.{ConnectionFactory, Put}
-import org.apache.hadoop.hbase.io.ImmutableBytesWritable
 import org.apache.hadoop.hbase.util.Bytes
+import org.apache.hadoop.hbase.{HBaseConfiguration, TableName}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 
-object HbaseWrite {
+object HbaseCommonWrite {
 
   def main(args: Array[String]): Unit = {
     val sparkConf = new SparkConf()
       //      .setMaster("local[12]")
-      .setAppName("HbaseWrite")
+      .setAppName("HbaseCommonWrite")
 
     val spark = SparkSession
       .builder
