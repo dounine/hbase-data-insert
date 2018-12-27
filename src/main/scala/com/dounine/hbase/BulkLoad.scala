@@ -1,5 +1,7 @@
 package com.dounine.hbase
 
+import java.util.UUID
+
 import org.apache.hadoop.fs.Path
 import org.apache.hadoop.hbase.client.ConnectionFactory
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable
@@ -58,7 +60,8 @@ object BulkLoad {
     val table = conn.getTable(tableName)
     val regionLocator = conn.getRegionLocator(tableName)
 
-    val hFileOutput = "/tmp/h_file"
+    val jobId = UUID.randomUUID().toString
+    val hFileOutput = s"/tmp/bulkload/$jobId"
 
     output.saveAsNewAPIHadoopFile(hFileOutput,
       classOf[ImmutableBytesWritable],
